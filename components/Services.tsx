@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Reveal from './Reveal';
 
 const services = [
   {
@@ -50,25 +51,28 @@ const Services: React.FC = () => {
   return (
     <section id="servicos" className="py-20 bg-slate-50">
       <div className="container mx-auto px-6 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Como posso ajudar seu filho?</h2>
-        <p className="text-slate-600 max-w-2xl mx-auto mb-12">
-          Serviços pedagógicos pensados para cada etapa do desenvolvimento infantil, sempre com foco no afeto e na eficácia.
-        </p>
+        <Reveal>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Como posso ajudar seu filho?</h2>
+          <p className="text-slate-600 max-w-2xl mx-auto mb-12">
+            Serviços pedagógicos pensados para cada etapa do desenvolvimento infantil, sempre com foco no afeto e na eficácia.
+          </p>
+        </Reveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div
-              key={index}
-              className={`${service.color} p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 text-left border border-white hover:-translate-y-2`}
-            >
-              <div className="text-4xl mb-4">{service.icon}</div>
-              <h3 className="text-xl font-bold text-slate-800 mb-3">{service.title}</h3>
-              <p className="text-slate-600 mb-4 text-sm leading-relaxed">{service.desc}</p>
-              <div className="pt-4 border-t border-slate-200">
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-1">Benefício</span>
-                <p className="text-sm font-semibold text-slate-700">{service.benefit}</p>
+            <Reveal key={index} delay={index * 100}>
+              <div
+                className={`${service.color} h-full p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 text-left border border-white hover:-translate-y-2`}
+              >
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <h3 className="text-xl font-bold text-slate-800 mb-3">{service.title}</h3>
+                <p className="text-slate-600 mb-4 text-sm leading-relaxed">{service.desc}</p>
+                <div className="pt-4 border-t border-slate-200">
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-1">Benefício</span>
+                  <p className="text-sm font-semibold text-slate-700">{service.benefit}</p>
+                </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

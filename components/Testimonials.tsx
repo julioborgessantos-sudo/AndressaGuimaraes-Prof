@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Reveal from './Reveal';
 
 const Testimonials: React.FC = () => {
   const reviews = [
@@ -23,24 +24,28 @@ const Testimonials: React.FC = () => {
   return (
     <section className="py-20 bg-slate-50">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">O que os pais dizem</h2>
-          <div className="flex justify-center space-x-1">
-            {[1,2,3,4,5].map(s => <span key={s} className="text-yellow-400 text-2xl">★</span>)}
+        <Reveal>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">O que os pais dizem</h2>
+            <div className="flex justify-center space-x-1">
+              {[1,2,3,4,5].map(s => <span key={s} className="text-yellow-400 text-2xl">★</span>)}
+            </div>
           </div>
-        </div>
+        </Reveal>
         <div className="grid md:grid-cols-3 gap-8">
           {reviews.map((r, i) => (
-            <div key={i} className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 relative">
-              <div className="absolute -top-4 left-8 text-6xl text-purple-100 font-serif">"</div>
-              <p className="text-slate-600 mb-6 italic relative z-10 leading-relaxed">
-                {r.content}
-              </p>
-              <div>
-                <p className="font-bold text-slate-800">{r.name}</p>
-                <p className="text-sm text-purple-600 font-semibold">{r.role}</p>
+            <Reveal key={i} delay={i * 200}>
+              <div className="h-full bg-white p-8 rounded-3xl shadow-sm border border-slate-100 relative">
+                <div className="absolute -top-4 left-8 text-6xl text-purple-100 font-serif">"</div>
+                <p className="text-slate-600 mb-6 italic relative z-10 leading-relaxed">
+                  {r.content}
+                </p>
+                <div>
+                  <p className="font-bold text-slate-800">{r.name}</p>
+                  <p className="text-sm text-purple-600 font-semibold">{r.role}</p>
+                </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
